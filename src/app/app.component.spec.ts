@@ -24,4 +24,8 @@ describe('AppComponent', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('.content span')?.textContent).toContain('angular-docker-jenkins app is running!');
   });
+
+  it("should fail", () => {
+    expect(true).toEqual(false);
+  })
 });

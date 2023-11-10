@@ -40,6 +40,8 @@ module.exports = function (config) {
             flags: ['--no-sandbox']
         }
     },
-    restartOnFileChange: true
+    restartOnFileChange: true,
+    captureTimeout: 60000,
+    browserNoActivityTimeout: 360000
   });
 };

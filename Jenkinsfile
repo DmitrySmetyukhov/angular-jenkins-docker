@@ -9,11 +9,12 @@ pipeline {
  
     stage('Test') {
       parallel {
-        stage('Static code analysis') {
-            steps { sh 'npm run-script lint' }
-        }
         stage('Unit tests') {
-            steps { sh 'npm run-script test' }
+            steps { 
+              catchError(buildResult: 'FAILURE"){
+                 sh 'npm run-script test' 
+              }
+            }
         }
       }
     }

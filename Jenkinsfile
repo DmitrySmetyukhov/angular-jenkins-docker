@@ -11,7 +11,7 @@ def installDependencies() {
 
 pipeline {
     agent {
-        docker { image 'your-custom-node-image:latest' }
+        docker { image 'node:20' }
     }
     stages {
         stage('Install') {

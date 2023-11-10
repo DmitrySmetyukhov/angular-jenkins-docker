@@ -4,31 +4,34 @@ pipeline {
   }
   stages {
     stage('Install') {
-      steps { sh 'npm install' }
+      steps {
+        sh 'npm install'
+      }
     }
- 
+
     stage('Test') {
       parallel {
         stage('Unit tests') {
-            steps { 
-              catchError(buildResult: 'FAILURE"){
-                 sh 'npm run-script test' 
-              }
+          steps {
+            catchError(buildResult: 'FAILURE') {
+              sh 'npm run-script test'
             }
+          }
         }
       }
     }
- 
+
     stage('Build') {
-      steps { sh 'npm run-script build' }
+      steps {
+        sh 'npm run-script build'
+      }
     }
   }
 
-
-   /* Cleanup workspace */
-    post {
-       always {
-           deleteDir()
-       }
+  /* Cleanup workspace */
+  post {
+    always {
+      deleteDir()
     }
+  }
 }

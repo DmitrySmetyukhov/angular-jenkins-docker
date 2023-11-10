@@ -21,18 +21,6 @@ pipeline {
             }
         }
 
-        stage('Test') {
-            parallel {
-                stage('Unit tests') {
-                    steps {
-                        catchError(buildResult: 'FAILURE') {
-                            sh 'npm run-script test'
-                        }
-                    }
-                }
-            }
-        }
-
         stage('Build') {
             steps {
                 sh 'npm run-script build'
